@@ -6,7 +6,6 @@ def filemeta_collector(full_file_path):
         reader = csv.reader(fp)
         headers = next(reader)
 
-    
     sniffer = csv.Sniffer()
     dialect = sniffer.sniff(str(headers))
     detect_delimiter = dialect.delimiter
