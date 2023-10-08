@@ -1,14 +1,20 @@
-list1 = ['bobby', 'hadz', 'com']
+filepath =r'C:\programs\pyprojects\FileIngestion\dir_source\organizations_1.csv'
 
-# for item1, item2, item3 in zip(list1, list1[1:0], list1[3:0]):
-#     # bobby 1 a
-#     # hadz 2 b
-#     # com 3 c
-#     print(item1, item2, item3)
+import pandas as pd
+
+df_or = pd.read_csv(filepath, sep =',')
+
+print(df_or)
+df_columns_list = df_or.columns.to_list()
+print(df_columns_list)
+
+df_columns_str = str(df_columns_list)
+print(df_columns_str)
+
+import csv
+
+sniffer = csv.Sniffer()
+dialect = sniffer.sniff(df_columns_str)
+print(dialect.delimiter)
 
 
-for item1, item2, item3 in zip(list1, list1, list1):
-    # bobby 1 a
-    # hadz 2 b
-    # com 3 c
-    print(item1, item2, item3)
