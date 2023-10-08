@@ -1,4 +1,6 @@
 import configparser
+# from fileingestion import process_new_file_group , filegroup_exists_check , filemeta_collector , load_existing_file_group
+# from fileingestion import *
 from filegroup_exists_check import filegroup_exists_check
 from filemeta_collector import filemeta_collector
 from process_new_file_group import process_new_file_group
@@ -28,7 +30,8 @@ def init_readfile(config_path):
             # print('##DEBUG## file Not found-', file, source_file_dict[file])
             columndatatype , sep , header = filemeta_collector(source_file_dict[file])
             if None not in (columndatatype , sep , header):
-                process_new_file_group(file,columndatatype , sep , header)
+                # process_new_file_group(config_path, file,columndatatype , sep , header)
+                process_new_file_group(config_path, file)
 
 
 
