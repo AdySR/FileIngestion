@@ -1,6 +1,4 @@
 import configparser
-# from fileingestion import process_new_file_group , filegroup_exists_check , filemeta_collector , load_existing_file_group
-# from fileingestion import *
 from filegroup_exists_check import filegroup_exists_check
 from filemeta_collector import filemeta_collector
 from process_new_file_group import process_new_file_group
@@ -33,10 +31,3 @@ def init_readfile(config_path):
                 process_new_file_group(config_path, file[0:file.index('_')].lower(), str(columndatatype) , sep , str(header))
                 load_existing_file_group(source_file_dict[file], file[0:file.index('_')].lower())
 
-
-
-
-
-config_path = r'C:\programs\pyprojects\FileIngestion\config\config.ini'
-
-init_readfile(config_path)
