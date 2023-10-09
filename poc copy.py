@@ -5,7 +5,7 @@ config_path = r'C:\programs\pyprojects\FileIngestion\config\config.ini'
 filegroup_list =  'EMPLOYEE , USER'
 
 refresh_config.read(config_path)
-refresh_config.set('DEFAULT','filegroup_list',filegroup_list)
+refresh_config.set('DEFAULT','FileGroupList',filegroup_list)
 
 with open(config_path, 'w') as configfile:
     refresh_config.write(configfile)

@@ -12,16 +12,17 @@ def process_new_file_group(config_path, filegroup ,columndatatype , sep , header
         update_config.write(configfile)
         configfile.close()
 
-    # print(columndatatype)
-    # print(filegroup)
-    # # print(type(str(columndatatype)))
-    # print(sep)
-    # # print(type(sep))
-    # print(header)
-    # # print(type(str(header)))
-    # file_name_lookup = filegroup[0:filegroup.index('_')].lower()
-    # print(file_name_lookup)
+    refresh_config = configparser.ConfigParser()
+    refresh_config.read(config_path)
+    filegroup_list = refresh_config['DEFAULT']['FileGroupList']
+    filegroup_list = filegroup_list.split(',')
+    filegroup_list.append(filegroup)
+    filegroup_list=str(filegroup_list)[1:-1]
+    filegroup_list = filegroup_list.replace("'",'')
 
+    refresh_config.set('DEFAULT','FileGroupList',str(filegroup_list))
 
-
+    with open(config_path, 'w') as configfile:
+        refresh_config.write(configfile)
+        configfile.close()
 
