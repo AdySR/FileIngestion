@@ -24,14 +24,16 @@ def init_readfile(config_path):
     for file in source_file_list:
         
         if(filegroup_exists_check(config_path,file)):
-            # print('##DEBUG## file found-', file, source_file_dict[file])
+            print('##DEBUG## file found-', file, source_file_dict[file])
             load_existing_file_group(source_file_dict[file], file[0:file.index('_')].lower())
         else:
-            # print('##DEBUG## file Not found-', file, source_file_dict[file])
+            print('##DEBUG## file Not found-', file, source_file_dict[file])
             columndatatype , sep , header = filemeta_collector(source_file_dict[file])
             if None not in (columndatatype , sep , header):
-                # process_new_file_group(config_path, file,columndatatype , sep , header)
-                process_new_file_group(config_path, file)
+                process_new_file_group(config_path, file[0:file.index('_')].lower(), str(columndatatype) , sep , str(header))
+                load_existing_file_group(source_file_dict[file], file[0:file.index('_')].lower())
+
+
 
 
 

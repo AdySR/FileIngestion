@@ -1,12 +1,11 @@
-def process_new_file_group(config_path, filegroup):
-    # , columndatatype , sep , header):
+def process_new_file_group(config_path, filegroup ,columndatatype , sep , header):
     import configparser
     update_config =configparser.ConfigParser()
-    update_config.read(config_path)
     update_config.add_section(filegroup)
-    # update_config.set('EMPLOYEE','delimiter',';')
-    # update_config.set('EMPLOYEE','select_columns','empid, emp_name, emp_doj')
-    # update_config.set('EMPLOYEE','column_metadata_dict','empid: int, emp_name: string(100), emp_doj: date')
+
+    update_config.set(filegroup,'delimiter',sep)
+    update_config.set(filegroup,'column_list',header)
+    update_config.set(filegroup,'column_metadata',columndatatype)
 
     with open(config_path,'a') as configfile:
         configfile.write('\n\n')
